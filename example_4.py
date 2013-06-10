@@ -1,14 +1,16 @@
 # We want the following function to median-filter the arrays (as in Problem Set
 # 4) but it looks like there is an issue in the plot - the red curve should
 # follow the blue points better. What is happening?
-
+# y_new = y is only a reference to y, so you use the values of y and change it
+# in y_new[i]. So the results will be false. Also you dont need to copy y. You
+# can make an array with the len(x) e.g y_new = np.zeros(len(x)).
 import numpy as np
 np.random.seed(12345)  # ensures the random values are always the same
 import matplotlib.pyplot as plt
 
 
 def median_filter(x, y, width):
-    y_new = y
+    y_new = np.copy(y)
     for i in range(len(x)):
         y_new[i] = np.median(y[(x > x[i] - width * 0.5) &
                                (x < x[i] + width * 0.5)])
