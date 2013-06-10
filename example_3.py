@@ -9,7 +9,7 @@
 # Integral is: 2099.999499
 #
 # why is this not working?
-
+# Missing brackets in print and trapz wants function first.
 import numpy as np
 from scipy.integrate import trapz
 
@@ -17,4 +17,4 @@ n = 1000
 x = np.linspace(0., 10., n)
 y = 3. * x ** 2 + 2. * x + 1.
 
-print "Integral is:", trapz(x, y)
+print("Integral is:", trapz(y, x=x))
